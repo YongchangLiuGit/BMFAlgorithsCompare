@@ -1,0 +1,660 @@
+source('D:/Workspace/毕设/3.10/LTMGSCA-master/01/Process.R')
+DIM<-10
+Thres<-0.6
+
+setwd("C:/Programs/Research/Project/Project/01/0-1/")
+load("C:/Programs/Research/Project/Project/01/0-1/GSE81861_scRNA.Rdata")
+
+# Decompose And Timing
+t1=proc.time()
+dec<-MEBF(result,DIM,Thres)
+t2=proc.time()
+t<-t2-t1
+t<-t[[1]]
+
+# Recompose the matrix.
+rec<-Recompose(dec)
+colnames(rec)<-colnames(result)
+rownames(rec)<-rownames(result)
+
+# Difference Matrix in 0/1. Use this matrix to calculate the L1 norm of a matrix.
+difm01<-DifferenceMatrix01(result,rec)
+# Reconstruction Error
+re<-(MatL1(difm01)/MatL1(result))
+	output<-list()
+	omMEBF <-OutputMatrix()
+	omMEBF<-cbind(MEBFPerformance(result,DIM,Thres,dec,t,rec,re),omMEBF)
+	rm(result,difm01)
+	omMEBF<-omMEBF[,1]
+	output[[1]]<-omMEBF
+
+setwd("C:/Programs/Research/Project/Project/01/0-1/MEBF")
+save(dec,rec,output,file="GSE81861_scRNA.Rdata")
+rm(dec,output,rec)
+gc()
+ ##########################################################################
+
+setwd("C:/Programs/Research/Project/Project/01/0-1/")
+load("C:/Programs/Research/Project/Project/01/0-1/GSE67835_data_c.Rdata")
+
+# Decompose And Timing
+t1=proc.time()
+dec<-MEBF(result,DIM,Thres)
+t2=proc.time()
+t<-t2-t1
+t<-t[[1]]
+
+# Recompose the matrix.
+rec<-Recompose(dec)
+colnames(rec)<-colnames(result)
+rownames(rec)<-rownames(result)
+
+# Difference Matrix in 0/1. Use this matrix to calculate the L1 norm of a matrix.
+difm01<-DifferenceMatrix01(result,rec)
+# Reconstruction Error
+re<-(MatL1(difm01)/MatL1(result))
+	output<-list()
+	omMEBF <-OutputMatrix()
+	omMEBF<-cbind(MEBFPerformance(result,DIM,Thres,dec,t,rec,re),omMEBF)
+	rm(result,difm01)
+	omMEBF<-omMEBF[,1]
+	output[[1]]<-omMEBF
+
+setwd("C:/Programs/Research/Project/Project/01/0-1/MEBF")
+save(dec,rec,output,file="GSE67835_data_c.Rdata")
+rm(dec,output,rec)
+ 
+gc()
+ ##########################################################################
+
+setwd("C:/Programs/Research/Project/Project/01/0-1/")
+load("C:/Programs/Research/Project/Project/01/0-1/GSE75688_scRNA.Rdata")
+
+# Decompose And Timing
+t1=proc.time()
+dec<-MEBF(result,DIM,Thres)
+t2=proc.time()
+t<-t2-t1
+t<-t[[1]]
+
+# Recompose the matrix.
+rec<-Recompose(dec)
+colnames(rec)<-colnames(result)
+rownames(rec)<-rownames(result)
+
+# Difference Matrix in 0/1. Use this matrix to calculate the L1 norm of a matrix.
+difm01<-DifferenceMatrix01(result,rec)
+# Reconstruction Error
+re<-(MatL1(difm01)/MatL1(result))
+	output<-list()
+	omMEBF <-OutputMatrix()
+	omMEBF<-cbind(MEBFPerformance(result,DIM,Thres,dec,t,rec,re),omMEBF)
+	rm(result,difm01)
+	omMEBF<-omMEBF[,1]
+	output[[1]]<-omMEBF
+
+setwd("C:/Programs/Research/Project/Project/01/0-1/MEBF")
+save(dec,rec,output,file="GSE75688_scRNA.Rdata")
+rm(dec,output,rec)
+ 
+gc()
+ ##########################################################################
+
+setwd("C:/Programs/Research/Project/Project/01/0-1/")
+load("C:/Programs/Research/Project/Project/01/0-1/GSE84465_scRNA.Rdata")
+
+# Decompose And Timing
+t1=proc.time()
+dec<-MEBF(result,DIM,Thres)
+t2=proc.time()
+t<-t2-t1
+t<-t[[1]]
+
+# Recompose the matrix.
+rec<-Recompose(dec)
+colnames(rec)<-colnames(result)
+rownames(rec)<-rownames(result)
+
+# Difference Matrix in 0/1. Use this matrix to calculate the L1 norm of a matrix.
+difm01<-DifferenceMatrix01(result,rec)
+# Reconstruction Error
+re<-(MatL1(difm01)/MatL1(result))
+	output<-list()
+	omMEBF <-OutputMatrix()
+	omMEBF<-cbind(MEBFPerformance(result,DIM,Thres,dec,t,rec,re),omMEBF)
+	rm(result,difm01)
+	omMEBF<-omMEBF[,1]
+	output[[1]]<-omMEBF
+
+setwd("C:/Programs/Research/Project/Project/01/0-1/MEBF")
+save(dec,rec,output,file="GSE84465_scRNA.Rdata")
+rm(dec,output,rec)
+ 
+gc()
+ ##########################################################################
+
+setwd("C:/Programs/Research/Project/Project/01/0-1/")
+load("C:/Programs/Research/Project/Project/01/0-1/GSE70630_scRNA.Rdata")
+
+# Decompose And Timing
+t1=proc.time()
+dec<-MEBF(result,DIM,Thres)
+t2=proc.time()
+t<-t2-t1
+t<-t[[1]]
+
+# Recompose the matrix.
+rec<-Recompose(dec)
+colnames(rec)<-colnames(result)
+rownames(rec)<-rownames(result)
+
+# Difference Matrix in 0/1. Use this matrix to calculate the L1 norm of a matrix.
+difm01<-DifferenceMatrix01(result,rec)
+# Reconstruction Error
+re<-(MatL1(difm01)/MatL1(result))
+	output<-list()
+	omMEBF <-OutputMatrix()
+	omMEBF<-cbind(MEBFPerformance(result,DIM,Thres,dec,t,rec,re),omMEBF)
+	rm(result,difm01)
+	omMEBF<-omMEBF[,1]
+	output[[1]]<-omMEBF
+
+setwd("C:/Programs/Research/Project/Project/01/0-1/MEBF")
+save(dec,rec,output,file="GSE70630_scRNA.Rdata")
+rm(dec,output,rec)
+ 
+gc()
+ ##########################################################################
+
+setwd("C:/Programs/Research/Project/Project/01/0-1/")
+load("C:/Programs/Research/Project/Project/01/0-1/GSE72056_scRNA.Rdata")
+
+# Decompose And Timing
+t1=proc.time()
+dec<-MEBF(result,DIM,Thres)
+t2=proc.time()
+t<-t2-t1
+t<-t[[1]]
+
+# Recompose the matrix.
+rec<-Recompose(dec)
+colnames(rec)<-colnames(result)
+rownames(rec)<-rownames(result)
+
+# Difference Matrix in 0/1. Use this matrix to calculate the L1 norm of a matrix.
+difm01<-DifferenceMatrix01(result,rec)
+# Reconstruction Error
+re<-(MatL1(difm01)/MatL1(result))
+	output<-list()
+	omMEBF <-OutputMatrix()
+	omMEBF<-cbind(MEBFPerformance(result,DIM,Thres,dec,t,rec,re),omMEBF)
+	rm(result,difm01)
+	omMEBF<-omMEBF[,1]
+	output[[1]]<-omMEBF
+
+setwd("C:/Programs/Research/Project/Project/01/0-1/MEBF")
+save(dec,rec,output,file="GSE72056_scRNA.Rdata")
+rm(dec,output,rec)
+ 
+gc()
+ ##########################################################################
+
+setwd("C:/Programs/Research/Project/Project/01/0-1/")
+load("C:/Programs/Research/Project/Project/01/0-1/GSE103322_scRNA.Rdata")
+
+# Decompose And Timing
+t1=proc.time()
+dec<-MEBF(result,DIM,Thres)
+t2=proc.time()
+t<-t2-t1
+t<-t[[1]]
+
+# Recompose the matrix.
+rec<-Recompose(dec)
+colnames(rec)<-colnames(result)
+rownames(rec)<-rownames(result)
+# Difference Matrix in 0/1. Use this matrix to calculate the L1 norm of a matrix.
+difm01<-DifferenceMatrix01(result,rec)
+# Reconstruction Error
+re<-(MatL1(difm01)/MatL1(result))
+	output<-list()
+	omMEBF <-OutputMatrix()
+	omMEBF<-cbind(MEBFPerformance(result,DIM,Thres,dec,t,rec,re),omMEBF)
+	rm(result,difm01)
+	omMEBF<-omMEBF[,1]
+	output[[1]]<-omMEBF
+
+setwd("C:/Programs/Research/Project/Project/01/0-1/MEBF")
+save(dec,rec,output,file="GSE103322_scRNA.Rdata")
+rm(dec,output,rec)
+ 
+gc()
+ ##########################################################################
+
+setwd("C:/Programs/Research/Project/Project/01/0-1/")
+load("C:/Programs/Research/Project/Project/01/0-1/GSE89567_scRNA.Rdata")
+
+# Decompose And Timing
+t1=proc.time()
+dec<-MEBF(result,DIM,Thres)
+t2=proc.time()
+t<-t2-t1
+t<-t[[1]]
+
+# Recompose the matrix.
+rec<-Recompose(dec)
+colnames(rec)<-colnames(result)
+rownames(rec)<-rownames(result)
+
+# Difference Matrix in 0/1. Use this matrix to calculate the L1 norm of a matrix.
+difm01<-DifferenceMatrix01(result,rec)
+# Reconstruction Error
+re<-(MatL1(difm01)/MatL1(result))
+	output<-list()
+	omMEBF <-OutputMatrix()
+	omMEBF<-cbind(MEBFPerformance(result,DIM,Thres,dec,t,rec,re),omMEBF)
+	rm(result,difm01)
+	omMEBF<-omMEBF[,1]
+	output[[1]]<-omMEBF
+
+setwd("C:/Programs/Research/Project/Project/01/0-1/MEBF")
+save(dec,rec,output,file="GSE89567_scRNA.Rdata")
+rm(dec,output,rec)
+ 
+gc()
+ ##########################################################################
+ ##########################################################################
+ ##########################################################################
+setwd("C:/Programs/Research/Project/Project/01/cutoff/")
+load("C:/Programs/Research/Project/Project/01/cutoff/GSE81861_scRNA.Rdata")
+
+# Decompose And Timing
+t1=proc.time()
+dec<-MEBF(result,DIM,Thres)
+t2=proc.time()
+t<-t2-t1
+t<-t[[1]]
+
+# Recompose the matrix.
+rec<-Recompose(dec)
+colnames(rec)<-colnames(result)
+rownames(rec)<-rownames(result)
+
+# Difference Matrix in 0/1. Use this matrix to calculate the L1 norm of a matrix.
+difm01<-DifferenceMatrix01(result,rec)
+# Reconstruction Error
+re<-(MatL1(difm01)/MatL1(result))
+	output<-list()
+	omMEBF <-OutputMatrix()
+	omMEBF<-cbind(MEBFPerformance(result,DIM,Thres,dec,t,rec,re),omMEBF)
+	rm(result,difm01)
+	omMEBF<-omMEBF[,1]
+	output[[1]]<-omMEBF
+
+setwd("C:/Programs/Research/Project/Project/01/cutoff/MEBF")
+save(dec,rec,output,file="GSE81861_scRNA.Rdata")
+rm(dec,output,rec)
+ 
+gc()
+ ##########################################################################
+
+setwd("C:/Programs/Research/Project/Project/01/cutoff/")
+load("C:/Programs/Research/Project/Project/01/cutoff/GSE67835_data_c.Rdata")
+
+# Decompose And Timing
+t1=proc.time()
+dec<-MEBF(result,DIM,Thres)
+t2=proc.time()
+t<-t2-t1
+t<-t[[1]]
+
+# Recompose the matrix.
+rec<-Recompose(dec)
+colnames(rec)<-colnames(result)
+rownames(rec)<-rownames(result)
+
+# Difference Matrix in 0/1. Use this matrix to calculate the L1 norm of a matrix.
+difm01<-DifferenceMatrix01(result,rec)
+# Reconstruction Error
+re<-(MatL1(difm01)/MatL1(result))
+	output<-list()
+	omMEBF <-OutputMatrix()
+	omMEBF<-cbind(MEBFPerformance(result,DIM,Thres,dec,t,rec,re),omMEBF)
+	rm(result,difm01)
+	omMEBF<-omMEBF[,1]
+	output[[1]]<-omMEBF
+
+setwd("C:/Programs/Research/Project/Project/01/cutoff/MEBF")
+save(dec,rec,output,file="GSE67835_data_c.Rdata")
+rm(dec,output,rec)
+ 
+gc()
+ ##########################################################################
+
+setwd("C:/Programs/Research/Project/Project/01/cutoff/")
+load("C:/Programs/Research/Project/Project/01/cutoff/GSE75688_scRNA.Rdata")
+
+# Decompose And Timing
+t1=proc.time()
+dec<-MEBF(result,DIM,Thres)
+t2=proc.time()
+t<-t2-t1
+t<-t[[1]]
+
+# Recompose the matrix.
+rec<-Recompose(dec)
+colnames(rec)<-colnames(result)
+rownames(rec)<-rownames(result)
+
+# Difference Matrix in 0/1. Use this matrix to calculate the L1 norm of a matrix.
+difm01<-DifferenceMatrix01(result,rec)
+# Reconstruction Error
+re<-(MatL1(difm01)/MatL1(result))
+	output<-list()
+	omMEBF <-OutputMatrix()
+	omMEBF<-cbind(MEBFPerformance(result,DIM,Thres,dec,t,rec,re),omMEBF)
+	rm(result,difm01)
+	omMEBF<-omMEBF[,1]
+	output[[1]]<-omMEBF
+
+setwd("C:/Programs/Research/Project/Project/01/cutoff/MEBF")
+save(dec,rec,output,file="GSE75688_scRNA.Rdata")
+rm(dec,output,rec)
+ 
+gc()
+ ##########################################################################
+
+setwd("C:/Programs/Research/Project/Project/01/cutoff/")
+load("C:/Programs/Research/Project/Project/01/cutoff/GSE84465_scRNA.Rdata")
+
+# Decompose And Timing
+t1=proc.time()
+dec<-MEBF(result,DIM,Thres)
+t2=proc.time()
+t<-t2-t1
+t<-t[[1]]
+
+# Recompose the matrix.
+rec<-Recompose(dec)
+colnames(rec)<-colnames(result)
+rownames(rec)<-rownames(result)
+
+# Difference Matrix in 0/1. Use this matrix to calculate the L1 norm of a matrix.
+difm01<-DifferenceMatrix01(result,rec)
+# Reconstruction Error
+re<-(MatL1(difm01)/MatL1(result))
+	output<-list()
+	omMEBF <-OutputMatrix()
+	omMEBF<-cbind(MEBFPerformance(result,DIM,Thres,dec,t,rec,re),omMEBF)
+	rm(result,difm01)
+	omMEBF<-omMEBF[,1]
+	output[[1]]<-omMEBF
+
+setwd("C:/Programs/Research/Project/Project/01/cutoff/MEBF")
+save(dec,rec,output,file="GSE84465_scRNA.Rdata")
+rm(dec,output,rec)
+ 
+gc()
+ ##########################################################################
+
+setwd("C:/Programs/Research/Project/Project/01/cutoff/")
+load("C:/Programs/Research/Project/Project/01/cutoff/GSE70630_scRNA.Rdata")
+
+# Decompose And Timing
+t1=proc.time()
+dec<-MEBF(result,DIM,Thres)
+t2=proc.time()
+t<-t2-t1
+t<-t[[1]]
+
+# Recompose the matrix.
+rec<-Recompose(dec)
+colnames(rec)<-colnames(result)
+rownames(rec)<-rownames(result)
+
+# Difference Matrix in 0/1. Use this matrix to calculate the L1 norm of a matrix.
+difm01<-DifferenceMatrix01(result,rec)
+# Reconstruction Error
+re<-(MatL1(difm01)/MatL1(result))
+	output<-list()
+	omMEBF <-OutputMatrix()
+	omMEBF<-cbind(MEBFPerformance(result,DIM,Thres,dec,t,rec,re),omMEBF)
+	rm(result,difm01)
+	omMEBF<-omMEBF[,1]
+	output[[1]]<-omMEBF
+
+setwd("C:/Programs/Research/Project/Project/01/cutoff/MEBF")
+save(dec,rec,output,file="GSE70630_scRNA.Rdata")
+rm(dec,output,rec)
+ 
+gc()
+ ##########################################################################
+
+setwd("C:/Programs/Research/Project/Project/01/cutoff/")
+load("C:/Programs/Research/Project/Project/01/cutoff/GSE72056_scRNA.Rdata")
+
+# Decompose And Timing
+t1=proc.time()
+dec<-MEBF(result,DIM,Thres)
+t2=proc.time()
+t<-t2-t1
+t<-t[[1]]
+
+# Recompose the matrix.
+rec<-Recompose(dec)
+colnames(rec)<-colnames(result)
+rownames(rec)<-rownames(result)
+
+# Difference Matrix in 0/1. Use this matrix to calculate the L1 norm of a matrix.
+difm01<-DifferenceMatrix01(result,rec)
+# Reconstruction Error
+re<-(MatL1(difm01)/MatL1(result))
+	output<-list()
+	omMEBF <-OutputMatrix()
+	omMEBF<-cbind(MEBFPerformance(result,DIM,Thres,dec,t,rec,re),omMEBF)
+	rm(result,difm01)
+	omMEBF<-omMEBF[,1]
+	output[[1]]<-omMEBF
+
+setwd("C:/Programs/Research/Project/Project/01/cutoff/MEBF")
+save(dec,rec,output,file="GSE72056_scRNA.Rdata")
+rm(dec,output,rec)
+ 
+gc()
+ ##########################################################################
+
+setwd("C:/Programs/Research/Project/Project/01/cutoff/")
+load("C:/Programs/Research/Project/Project/01/cutoff/GSE103322_scRNA.Rdata")
+
+# Decompose And Timing
+t1=proc.time()
+dec<-MEBF(result,DIM,Thres)
+t2=proc.time()
+t<-t2-t1
+t<-t[[1]]
+
+# Recompose the matrix.
+rec<-Recompose(dec)
+colnames(rec)<-colnames(result)
+rownames(rec)<-rownames(result)
+# Difference Matrix in 0/1. Use this matrix to calculate the L1 norm of a matrix.
+difm01<-DifferenceMatrix01(result,rec)
+# Reconstruction Error
+re<-(MatL1(difm01)/MatL1(result))
+	output<-list()
+	omMEBF <-OutputMatrix()
+	omMEBF<-cbind(MEBFPerformance(result,DIM,Thres,dec,t,rec,re),omMEBF)
+	rm(result,difm01)
+	omMEBF<-omMEBF[,1]
+	output[[1]]<-omMEBF
+
+setwd("C:/Programs/Research/Project/Project/01/cutoff/MEBF")
+save(dec,rec,output,file="GSE103322_scRNA.Rdata")
+rm(dec,output,rec)
+ 
+gc()
+ ##########################################################################
+
+setwd("C:/Programs/Research/Project/Project/01/cutoff/")
+load("C:/Programs/Research/Project/Project/01/cutoff/GSE89567_scRNA.Rdata")
+
+# Decompose And Timing
+t1=proc.time()
+dec<-MEBF(result,DIM,Thres)
+t2=proc.time()
+t<-t2-t1
+t<-t[[1]]
+
+# Recompose the matrix.
+rec<-Recompose(dec)
+colnames(rec)<-colnames(result)
+rownames(rec)<-rownames(result)
+
+# Difference Matrix in 0/1. Use this matrix to calculate the L1 norm of a matrix.
+difm01<-DifferenceMatrix01(result,rec)
+# Reconstruction Error
+re<-(MatL1(difm01)/MatL1(result))
+	output<-list()
+	omMEBF <-OutputMatrix()
+	omMEBF<-cbind(MEBFPerformance(result,DIM,Thres,dec,t,rec,re),omMEBF)
+	rm(result,difm01)
+	omMEBF<-omMEBF[,1]
+	output[[1]]<-omMEBF
+
+setwd("C:/Programs/Research/Project/Project/01/cutoff/MEBF")
+save(dec,rec,output,file="GSE89567_scRNA.Rdata")
+rm(dec,output,rec)
+ 
+gc()
+ ##########################################################################
+ ##########################################################################
+ ##########################################################################
+
+setwd("D:/Workspace/毕设/3.10/LTMGSCA-master/01/0-1/Mouse")
+load("D:/Workspace/毕设/3.10/LTMGSCA-master/01/0-1/Mouse/MCA_Lung3.Rdata")
+
+# Decompose And Timing
+t1=proc.time()
+dec<-MEBF(result,DIM,Thres)
+t2=proc.time()
+t<-t2-t1
+t<-t[[1]]
+
+# Recompose the matrix.
+rec<-Recompose(dec)
+colnames(rec)<-colnames(result)
+rownames(rec)<-rownames(result)
+
+# Difference Matrix in 0/1. Use this matrix to calculate the L1 norm of a matrix.
+difm01<-DifferenceMatrix01(result,rec)
+# Reconstruction Error
+re<-(MatL1(difm01)/MatL1(result))
+	output<-list()
+	omMEBF <-OutputMatrix()
+	omMEBF<-cbind(MEBFPerformance(result,DIM,Thres,dec,t,rec,re),omMEBF)
+	rm(result,difm01)
+	omMEBF<-omMEBF[,1]
+	output[[1]]<-omMEBF
+
+setwd("D:/Workspace/毕设/3.10/LTMGSCA-master/01/0-1/MEBF/Mouse")
+save(dec,rec,output,file="MCA_Lung3.Rdata")
+ ##########################################################################
+
+
+setwd("C:/Programs/Research/Project/Project/01/0-1/Mouse")
+load("C:/Programs/Research/Project/Project/01/0-1/Mouse/MCA_SmallIntestine1.Rdata")
+
+# Decompose And Timing
+t1=proc.time()
+dec<-MEBF(result,DIM,Thres)
+t2=proc.time()
+t<-t2-t1
+t<-t[[1]]
+
+# Recompose the matrix.
+rec<-Recompose(dec)
+colnames(rec)<-colnames(result)
+rownames(rec)<-rownames(result)
+
+# Difference Matrix in 0/1. Use this matrix to calculate the L1 norm of a matrix.
+difm01<-DifferenceMatrix01(result,rec)
+# Reconstruction Error
+re<-(MatL1(difm01)/MatL1(result))
+	output<-list()
+	omMEBF <-OutputMatrix()
+	omMEBF<-cbind(MEBFPerformance(result,DIM,Thres,dec,t,rec,re),omMEBF)
+	rm(result,difm01)
+	omMEBF<-omMEBF[,1]
+	output[[1]]<-omMEBF
+
+setwd("C:/Programs/Research/Project/Project/01/0-1/MEBF/Mouse")
+save(dec,rec,output,file="MCA_SmallIntestine1.Rdata")
+ ##########################################################################
+
+setwd("C:/Programs/Research/Project/Project/01/0-1/Mouse")
+load("C:/Programs/Research/Project/Project/01/0-1/Mouse/MCA_Pancreas.Rdata")
+
+# Decompose And Timing
+t1=proc.time()
+dec<-MEBF(result,DIM,Thres)
+t2=proc.time()
+t<-t2-t1
+t<-t[[1]]
+
+# Recompose the matrix.
+rec<-Recompose(dec)
+colnames(rec)<-colnames(result)
+rownames(rec)<-rownames(result)
+# Difference Matrix in 0/1. Use this matrix to calculate the L1 norm of a matrix.
+difm01<-DifferenceMatrix01(result,rec)
+# Reconstruction Error
+re<-(MatL1(difm01)/MatL1(result))
+	output<-list()
+	omMEBF <-OutputMatrix()
+	omMEBF<-cbind(MEBFPerformance(result,DIM,Thres,dec,t,rec,re),omMEBF)
+	rm(result,difm01)
+	omMEBF<-omMEBF[,1]
+	output[[1]]<-omMEBF
+
+setwd("C:/Programs/Research/Project/Project/01/0-1/MEBF/Mouse")
+save(dec,rec,output,file="MCA_Pancreas.Rdata")
+ ##########################################################################
+
+
+setwd("C:/Programs/Research/Project/Project/01/0-1/Mouse")
+load("C:/Programs/Research/Project/Project/01/0-1/Mouse/MCA_Lung3.Rdata")
+
+# Decompose And Timing
+t1=proc.time()
+dec<-MEBF(result,DIM,Thres)
+t2=proc.time()
+t<-t2-t1
+t<-t[[1]]
+
+# Recompose the matrix.
+rec<-Recompose(dec)
+colnames(rec)<-colnames(result)
+rownames(rec)<-rownames(result)
+
+# Difference Matrix in 0/1. Use this matrix to calculate the L1 norm of a matrix.
+difm01<-DifferenceMatrix01(result,rec)
+# Reconstruction Error
+re<-(MatL1(difm01)/MatL1(result))
+	output<-list()
+	omMEBF <-OutputMatrix()
+	omMEBF<-cbind(MEBFPerformance(result,DIM,Thres,dec,t,rec,re),omMEBF)
+	rm(result,difm01)
+	omMEBF<-omMEBF[,1]
+	output[[1]]<-omMEBF
+
+setwd("C:/Programs/Research/Project/Project/01/0-1/MEBF/Mouse")
+save(dec,rec,output,file="MCA_Pancreas.Rdata")
+ ##########################################################################
+
+
+
+
+
+
+
+

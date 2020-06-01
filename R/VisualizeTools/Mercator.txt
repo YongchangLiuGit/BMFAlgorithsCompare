@@ -1,0 +1,117 @@
+my.data <- as.matrix(d2)
+my.binmat <- BinaryMatrix(my.data)
+my.binmat <- t(my.binmat)
+
+my.binmat <- removeDuplicateFeatures(my.binmat)
+my.binmat <- removeDuplicateFeatures(my.binmat)
+set.seed(21348)
+
+my.binmat <- threshLGF(my.binmat, cutoff=0.3)
+
+Delta <- my.binmat@thresher@delta
+hist(Delta, breaks=20, main="", xlab="Weight", col="gray")
+abline(v=0.3, col='red')
+# 权重直方图
+
+abline(h=my.binmat@reaper@pcdim, col="forestgreen", lwd=2)
+abline(h=7, col="orange", lwd=2)
+#贝叶斯敏感度分析图
+
+pts <- screeplot(my.binmat@reaper, xlim=c(0,30))
+abline(v=pts[my.binmat@reaper@pcdim], col="forestgreen", lwd=2)
+abline(v=pts[7], col="orange", lwd=2)
+#陡坡图
+
+#############距离分析
+kk <- 8
+
+# Jaccard Distance
+jacc.Vis <- Mercator(my.binmat, "jaccard", "hclust", K=kk)
+hist(jacc.Vis, xlab="Jaccard Distance", main="Histogram of Distances")
+
+
+#hierarchical clustering
+plot(jacc.Vis, view = "hclust")
+
+#t-SNE
+par(pty="s")
+jacc.Vis <- addVisualization(jacc.Vis, "tsne", 
+            perplexity=5, 
+            xlab="T1", ylab="T2")
+plot(jacc.Vis, view = "tsne", main="t-SNE; Jaccard Distance; perplexity=5")
+
+#微调绘图
+jacc.Vis <- addVisualization(jacc.Vis, "tsne", 
+            perplexity=10)
+plot(jacc.Vis, view = "tsne",  main="t-SNE; Jaccard Distance; perplexity=10")
+
+#############
+#可视化多维比例（MDS）图
+	par(pty="m")		
+	
+	jacc.Vis <- addVisualization(jacc.Vis, "mds")
+	plot(jacc.Vis, view = "mds", main="MDS; Jaccard Distance")
+	
+#iGraph
+X <- jacc.Vis
+N <- as.matrix(X@distance)
+set.seed(87530)
+P <- downsample(40, N, 0.1)
+J <- jacc.Vis[P]
+J <- addVisualization(J, "tsne", perplexity=5)
+#Down-sampled t-SNE Plot
+par(pty="s")
+plot(J, view = "tsne", main="Down-sampled t-SNE Plot")
+
+
+par(pty="m")
+set.seed(10967)
+J <- addVisualization(J, "mds")
+J <- addVisualization(J, "graph")
+
+plot(J, view = "graph", layout = "mds")
+#一张图
+
+plot(J, view = "graph", layout = "nicely", 
+     main="Graphical View of Down-sampled Jaccard Distance Matrix",
+     xlim=c(-1,1))
+#Graphical View of Down-sampled Jaccard Distance Matrix
+
+	 
+plot(J, view = "graph", layout = "tsne", main="T-SNE Layout")
+#T-SNE Layout
+
+#Cluster Identities
+my.clust <- getClusters(jacc.Vis)
+tab <- table(my.clust)
+
+C <- my.binmat@columnInfo
+Cl4 <- C[my.clust == 4 ,]
+
+#Tuning
+set.seed(8642)
+sokal.Vis <- Mercator(my.binmat, "sokal", "tsne", K=kk, peplexity = 10)
+table(getClusters(sokal.Vis), getClusters(jacc.Vis))
+
+plot(sokal.Vis, view = "tsne", main="t-SNE; Sokal-Michener Distance; perplexity=10")
+#t-SNE; Sokal-Michener Distance; perplexity=10
+
+SV <- remapColors(jacc.Vis, sokal.Vis)
+table(getClusters(SV), getClusters(jacc.Vis))
+plot(SV, view = "tsne", main="t-SNE; Sokal-Michener Distance; perplexity=10")
+#t-SNE; Sokal-Michener Distance; perplexity=10
+
+#调色
+slot(jacc.Vis, "palette") <- c("red", "orange", "green", "blue",
+                               "cyan", "magenta", "purple", "black")
+plot(jacc.Vis, view = "tsne")
+
+#变形
+slot(jacc.Vis, "palette") <- c("red", "green", "blue",
+                               "cyan", "purple")
+plot(jacc.Vis, view = "tsne")
+	
+	
+	
+	
+	

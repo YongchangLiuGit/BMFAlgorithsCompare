@@ -1,0 +1,29 @@
+library(sp)
+library(ggplot2)
+library(reshape2)
+library(raster)
+library(latticeExtra)
+
+setwd("D:/Workspace/毕设/3.10/Tools/Graph")
+
+png(file = "input.png")
+spplot(raster(d), colorkey=FALSE, col.regions=c('white', 'black')) + layer(panel.grid(h=nrow(d)-1, v=ncol(d)-1, col=1))
+dev.off()
+
+png(file = "factor1.png")
+spplot(raster(dec[[1]]), colorkey=FALSE, col.regions=c('white', 'black')) + layer(panel.grid(h=nrow(dec[[1]])-1, v=ncol(dec[[1]])-1))
+dev.off()
+
+png(file = "factor2.png")
+spplot(raster(dec[[2]]), colorkey=FALSE, col.regions=c('white', 'black')) + layer(panel.grid(h=nrow(dec[[2]])-1, v=ncol(dec[[2]])-1))
+dev.off()
+
+png(file = "output.png")
+spplot(raster(rec), colorkey=FALSE, col.regions=c('white', 'black')) + layer(panel.grid(h=nrow(rec)-1, v=ncol(rec)-1, col=1))
+dev.off()
+
+png(file = "compare.png")
+spplot(raster(compare), colorkey=FALSE, col.regions=c('green', 'red')) + layer(panel.grid(h=nrow(compare)-1, v=ncol(compare)-1, col=1))
+dev.off()
+
+setwd("D:/Workspace/毕设/3.10/Tools")
